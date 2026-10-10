@@ -66,7 +66,7 @@ Execute the scripts in the specified order.
 
 ## Documentation
 
-The `docs/` directory contains the original project documentation in Bulgarian, along with the entity-relationship diagram and relational schema diagram.
+The `docs/` directory contains the original project documentation in Bulgarian and English, along with the entity-relationship diagram and relational schema diagram.
 
 The `queries/` directory contains descriptions of the SQL queries associated with the project.
 
