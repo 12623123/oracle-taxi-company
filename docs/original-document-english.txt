@@ -25,10 +25,10 @@ The mandatory requirements are:
 -Database support: A database must be implemented to store all relevant data, including requests, routes, taxis, users, and other information.
 -Orders and routes: The system must support ride requests, route creation, and automatic fare calculation based on the selected tariff.
 -Payment processing: Different payment methods (cash, card, and e-wallet) must be supported, along with the ability to view payment history.
--Оценки и обратна връзка: Customerите трябва да могат да оставят оценка и коментар за всеки завършен курс.
+-Reviews and feedback: Customers must be able to leave a rating and a comment for each completed ride.
 -Tariff module: The system must allow prices to be configured according to time of day, distance, service type, and other factors.
 -Tracking and reporting: Reports should be available for all completed rides, active drivers, workload, and revenue.
- ⦁Database Structure Design and Field Descriptions.
+⦁ Database Structure Design and Field Descriptions
 An ER diagram should be created to describe the relationships between entities and some of their most important attributes. 
   
   
@@ -47,31 +47,31 @@ Figure 2
 ![Relational Schema](docs/relational-schema.png)
 
 Customer:
-– Съхранява информация за клиентите на таксиметровата компания.
-– Включва идентификационен номер на клиента (client_id), име на клиента (име), телефонен номер (телефон), имейл (имайл) и адрес на клиента (клиент).
+– Stores information about taxi company customers.
+– Includes the customer ID (client_id), customer name (име), phone number (телефон), email (имейл), and customer address (адрес).
 Driver:
-– Съхранява информация за всички шофьори в системата.
-– Включва идентификационен номер на шофьора (driver_id), име (име), телефонен номер (телефон),дата на назначаване (дата_назначаване) и статус(статус).
+– Stores information about all drivers in the system.
+– Includes the driver ID (driver_id), name (име), phone number (телефон), hire date (дата_назначаване), and status (статус).
 Taxi vehicle:
 – Stores information about taxi vehicles.
 – Includes the vehicle ID (car_id), registration number, make (марка), model (модел), year of manufacture (година), fuel type (тип_гориво), and current driver (driver_id).
 
 
 Order:
-– Съхранява информация за поръчките на такси.
-– Включва идентификационен номер на заявката (order_id), идентификационен номер на клиента (client_id), идентификационен номер на маршрута (route_id), идентификационен номер на шофьора (driver_id), дата и час на поръчката (дата_и_час_на_поръчка), адрес на взимане (начален_адрес), адрес на дестинация(краен_адрес), разстоянието от началото до края (разстояние), продължителност на пътуването (продължителност) и статус на заявката (статус).
+– Stores information about taxi orders.
+– Includes the order ID (order_id), customer ID (client_id), route ID (route_id), driver ID (driver_id), order date and time (дата_и_час_на_поръчка), pickup address (начален_адрес), destination address (краен_адрес), distance from start to destination (разстояние), trip duration (продължителност), and order status (статус).
 Route:
-– Съхранява информация за маршрути, използвани при изпълнение на поръчки.
-– Включва идентификационен номер на маршрута (route_id), начална точка (начален_адрес), крайна точка (краен адрес), разстояние (разстояние), и приблизително време (средна_продължителност).
+– Stores information about routes used to fulfill orders.
+– Includes the route ID (route_id), starting point (начален_адрес), destination point (краен_адрес), distance (разстояние), and estimated duration (средна_продължителност).
 Payment:
-– Съхранява информация за плащанията, извършени от клиентите.
-– Включва идентификационен номер на плащането (payment_id), идентификационен номер на поръчката (order_id), сума (сума), дата на плащане (дата_на_плащане) и метод на плащане (начин_на_плащане).
+– Stores information about payments made by customers.
+– Includes the payment ID (payment_id), order ID (order_id), amount (сума), payment date (дата_на_плащане), and payment method (начин_на_плащане).
 Review and comment:
 – Stores customer ratings and comments about a particular order or driver.
 – Includes the review ID (review_id), customer (client_id), driver (driver_id), order (order_id), rating (оценка), date (дата), and text comment (коментар).
 Pricing:
-– Съхранява информация за ценообразуването на услугите.
-– Включва идентификационен номер на тарифа (tariff_id), тип услуга (service_type), цена на километър (price_per_km), минимална цена (minimum_price), допълнителни такси (extra_fees) и времеви диапазон на валидност (valid_time_range).
+– Stores information about service pricing.
+– Includes the tariff ID (tariff_id), service type (service_type), price per kilometer (price_per_km), minimum price (minimum_price), extra fees (extra_fees), and validity time range (valid_time_range).
 
 
 •	Database Creation Code
@@ -166,7 +166,7 @@ CREATE TABLE Оценки_и_коментари (
 
 •	After creating the tables, we need to insert data (records) into them.
 
-1.	Таблица "Customerи"
+1.	Table "Customerи"
 BEGIN
     INSERT INTO Customerи (име, телефон, имейл, адрес) VALUES 
     ('Иван Тодоров', '0888123456', 'ivan.todorov@abv.bg', 'ул. Приморски 15, Варна');
@@ -178,7 +178,7 @@ BEGIN
     ('Георги Симеонов', '0877123456', 'georgi.s@gmail.com', 'ул. Цар Освободител 22, Варна');
 END;
 /
-2.	Таблица "Driverи"
+2.	Table "Driverи"
 BEGIN
     INSERT INTO Driverи (име, телефон, дата_назначаване, статус) VALUES 
     ('Петър Петров', '0898456123', TO_DATE('2025-03-01', 'YYYY-MM-DD'), 'Активен');
@@ -190,7 +190,7 @@ BEGIN
     ('Николай Георгиев', '0876543210', TO_DATE('2025-01-10', 'YYYY-MM-DD'), 'Активен');
 END;
 /
-3.	Таблица "Vehicleи"
+3.	Table "Vehicleи"
 BEGIN
     INSERT INTO Vehicleи (регистрационен_номер, модел, марка, година, тип_гориво, driver_id) VALUES 
     ('B1234VV', 'Yaris', 'Toyota', 2015, 'Бензин', 1);  -- Toyota Yaris (older model)
@@ -202,7 +202,7 @@ BEGIN
     ('B5678OO', 'Astra', 'Opel', 2017, 'Бензин', 3);  -- Opel Astra (older model)
 END;
 /
-4.	Tаблица “Pricing”:
+4.	Table "Pricing":
 BEGIN
     -- Day tariff
     INSERT INTO Pricing (описание, цена_на_км, начална_такса, валидна_от, валидна_до) VALUES 
@@ -213,7 +213,7 @@ BEGIN
     ('Нощна тарифа', 1.50, 3.00, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-12-31', 'YYYY-MM-DD'));
 END;
 /
-5.	Таблица "Routeи"
+5.	Table "Routeи"
 BEGIN
     INSERT INTO Routeи (начален_адрес, краен_адрес, разстояние, средна_продължителност) VALUES 
     ('ул. Приморски 15, Варна', 'бул. Владислав 35, Варна', 12.5, 20.5);
@@ -278,7 +278,7 @@ Data Retrieval Queries:
 6.	Show all routes with their starting addresses, destination addresses, and distances.
 7.	Display all payments with the amount, payment method, and date.
 8.	Show customers who gave a particular driver a rating below 3.
-9.	Display orders and their statuses, filtered by the status "Completed".
+9.	Display orders and their statuses, filtered by the status value "Завършена" (Completed).
 10.	Show all orders for a given driver and customer, including trip distance and duration.
 11.	Display all taxis (vehicles) and their drivers for completed rides.
 12.	Show all tariffs that were valid during a specific period.
