@@ -10,14 +10,14 @@ The database is implemented in Oracle SQL and is intended to demonstrate practic
 
 The system contains the following eight tables:
 
-1. `Клиенти` — stores customer information.
-2. `Шофьори` — stores driver information.
-3. `Автомобили` — stores company vehicle data.
-4. `Цени` — stores pricing information and fares.
-5. `Маршрути` — stores route information.
-6. `Поръчки` — stores taxi orders.
-7. `Плащания` — stores payment records.
-8. `Оценки_и_коментари` — stores customer ratings and feedback.
+1. **Customers** (`Клиенти`) — stores customer information.
+2. **Drivers** (`Шофьори`) — stores driver information.
+3. **Vehicles** (`Автомобили`) — stores information about the company's vehicles.
+4. **Prices** (`Цени`) — stores pricing information.
+5. **Routes** (`Маршрути`) — stores route information.
+6. **Orders** (`Поръчки`) — stores taxi orders.
+7. **Payments** (`Плащания`) — stores payment information.
+8. **Reviews and Comments** (`Оценки_и_коментари`) — stores customer ratings and feedback.
 
 The tables are designed to model the main business flow of a taxi service: customer → order → route → payment → review.
 
@@ -96,6 +96,10 @@ A typical workflow in this system is:
 6. The customer can leave feedback in `Оценки_и_коментари`.
 
 This flow reflects a realistic taxi company process and demonstrates how relational database design supports business operations.
+
+## Project Purpose
+
+The purpose of this project is to apply database design and SQL programming concepts to a practical business scenario. It demonstrates how a relational database can organize and manage the main operations of a taxi company.
 
 ## Notes
 
