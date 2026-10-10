@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project represents a relational database designed to manage the operations of a taxi company. It organizes information about customers, drivers, vehicles, prices, routes, orders, payments, and customer reviews.
+This project represents a relational database designed to manage the operations of a taxi company. It organizes information about customers, drivers, vehicles, prices, routes, orders, payments, and customer feedback.
 
 The database is implemented using Oracle SQL and is intended to demonstrate database design, table creation, data manipulation, and SQL queries.
 
@@ -19,6 +19,16 @@ The database consists of the following eight tables:
 7. **Payments** (`Плащания`) — stores payment information.
 8. **Reviews and Comments** (`Оценки_и_коментари`) — stores customer ratings and feedback.
 
+## Database Diagrams
+
+### Entity-Relationship Diagram
+
+![Entity-Relationship Diagram](docs/er-diagram.png)
+
+### Relational Schema
+
+![Relational Schema](docs/relational-schema.png)
+
 ## Technologies Used
 
 - Oracle Database
@@ -31,8 +41,10 @@ The database consists of the following eight tables:
 oracle-taxi-company/
 ├── README.md
 ├── docs/
+│   ├── er-diagram.png
+│   ├── relational-schema.png
 │   ├── original-document.docx
-│   └── original-document.txt
+│   └── original-document-english.txt
 ├── sql/
 │   ├── 01_create_tables.sql
 │   └── 02_sample_data.sql
@@ -54,7 +66,7 @@ Execute the scripts in the specified order.
 
 ## Documentation
 
-The `docs/` directory contains the original project documentation in Bulgarian.
+The `docs/` directory contains the original project documentation in Bulgarian, along with the entity-relationship diagram and relational schema diagram.
 
 The `queries/` directory contains descriptions of the SQL queries associated with the project.
 
